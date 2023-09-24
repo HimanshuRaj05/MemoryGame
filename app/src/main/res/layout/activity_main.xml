@@ -24,18 +24,16 @@
         android:id="@+id/tv_p2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="P1: 0"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:textSize="32dp"
+        android:text="P2: 0"
         android:textColor="@color/black"
-        />
-
+        android:textSize="32dp" />
 
 
     <include
         layout="@layout/images"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
-        android:layout_height="300dp" />
+        android:layout_height="300dp"
+        android:layout_centerInParent="true" />
 </RelativeLayout>
