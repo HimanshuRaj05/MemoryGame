@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
-    TextView tv_p1, tv_p2;
+    TextView tv_p1, tv_p2, statusText;
     ImageView iv11, iv12, iv13, iv14, iv21, iv22, iv23, iv24, iv31, iv32, iv33, iv34;
 
     //array for images
@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     int turn=1;
     int playerPoints=0, cpuPoints=0;
 
+    String p1Name="";
+    String p2Name="";
+
 
 
 
@@ -43,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        p1Name= intent.getStringExtra("p1_name");
+        p2Name=intent.getStringExtra("p2_name");
+
+
 
         tv_p1=findViewById(R.id.tv_p1);
         tv_p2=findViewById(R.id.tv_p2);
@@ -58,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         iv32=findViewById(R.id.iv32);
         iv33=findViewById(R.id.iv33);
         iv34=findViewById(R.id.iv34);
+        statusText=findViewById(R.id.statusText);
 
 
         iv11.setTag("0");
@@ -73,6 +83,10 @@ public class MainActivity extends AppCompatActivity {
         iv33.setTag("10");
         iv34.setTag("11");
 
+
+        tv_p1.setText(p1Name+": 0");
+        tv_p2.setText(p2Name+": 0");
+        statusText.setText(p1Name+"'s turn");
 
         //load the card images
         frontOfCardResources();
@@ -363,10 +377,10 @@ public class MainActivity extends AppCompatActivity {
             //add points to the correct player
             if(turn==1){
                 playerPoints++;
-                tv_p1.setText("P1: "+playerPoints);
+                tv_p1.setText(p1Name+": "+playerPoints);
             } else if(turn==2){
                 cpuPoints++;
-                tv_p2.setText("P2: "+cpuPoints);
+                tv_p2.setText(p2Name+": "+cpuPoints);
             }
 
         } else {
@@ -385,11 +399,13 @@ public class MainActivity extends AppCompatActivity {
 
             //change the turn
             if(turn==1){
+                statusText.setText(p2Name+"'s turn");
                 turn=2;
                 tv_p1.setTextColor(Color.GRAY);
                 tv_p2.setTextColor(Color.BLACK);
             } else if(turn==2){
                 turn=1;
+                statusText.setText(p1Name+"'s turn");
                 tv_p2.setTextColor(Color.GRAY);
                 tv_p1.setTextColor(Color.BLACK);
             }
