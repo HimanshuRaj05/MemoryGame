@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingRight="16dp"
+    android:background="#F5F4ED"
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     xmlns:tools="http://schemas.android.com/tools"
